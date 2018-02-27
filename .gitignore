@@ -1,0 +1,4 @@
+*.jar
+*.jar.md5
+*.jar.sha1
+.DS_Store
