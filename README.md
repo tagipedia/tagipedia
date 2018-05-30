@@ -61,5 +61,8 @@ TUtils.showBluetoothDialog(this, "Open bluetooth" , "we use bluetooth for .... p
 ```
 
 
-
+### Hint: to ask user to enable location for android bigger than or equal 23 we have method for it.
+```java
+TUtils.showLocationDialog(this, "Open Location" , "we use location for .... please open it");
+```
 
