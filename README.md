@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.tagipedia:tagipedia:1.0.0@aar'){
+    compile ('com.tagipedia:tagipedia:1.0.1@aar'){
         transitive = true;
     }
 }
