@@ -66,3 +66,5 @@ TUtils.showBluetoothDialog(this, "Open bluetooth" , "we use bluetooth for .... p
 TUtils.showLocationDialog(this, "Open Location" , "we use location for .... please open it");
 ```
 
+## Sample code
+https://github.com/tagipedia/tagipedia-android-sample
