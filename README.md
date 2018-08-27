@@ -34,6 +34,13 @@ public class MyAppContext extends MultiDexApplication {
         // change notify period between same beacons notification in millisecond
         // DEFAULT: 30 * 60 * 1000 (30 minutes)
         tBuilder.setSameBeaconNotifyPeriod(20000);
+        callback.onLoggedEventRecordListener loggedEventRecordListener = new callback.onLoggedEventRecordListener() {
+            @Override
+            public void onEventLoggedRecord(HashMap hashMap) {
+                System.out.print(hashMap);
+            }
+        };
+        tBuilder.setEventLoggerListener(loggedEventRecordListener);
         tBuilder.build();
     }
 }
@@ -49,6 +56,8 @@ public class NotificationActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         Topic topic = (Topic) bundle.getSerializable("topic");
         System.out.println("Topic " + topic);
+        // you can show ad with its assigned template
+        TUtils.showAdDialog(this,topic);
         // you can use topic getters to display it in view
     }
 
@@ -64,6 +73,11 @@ TUtils.showBluetoothDialog(this, "Open bluetooth" , "we use bluetooth for .... p
 ### Hint: to ask user to enable location for android bigger than or equal 23 we have method for it.
 ```java
 TUtils.showLocationDialog(this, "Open Location" , "we use location for .... please open it");
+```
+
+### Hint: to show ad with its assigned template.
+```java
+TUtils.showAdDialog(this,topic);
 ```
 
 ## Sample code
