@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.tagipedia:tagipedia:1.0.1@aar'){
+    compile ('com.tagipedia:tagipedia:1.1.0@aar'){
         transitive = true;
     }
 }
@@ -34,7 +34,7 @@ public class MyAppContext extends MultiDexApplication {
         // change notify period between same beacons notification in millisecond
         // DEFAULT: 30 * 60 * 1000 (30 minutes)
         tBuilder.setSameBeaconNotifyPeriod(20000);
-        callback.onLoggedEventRecordListener loggedEventRecordListener = new callback.onLoggedEventRecordListener() {
+        Callback.OnLoggedEventRecordListener loggedEventRecordListener = new Callback.OnLoggedEventRecordListener() {
             @Override
             public void onEventLoggedRecord(HashMap hashMap) {
                 System.out.print(hashMap);
