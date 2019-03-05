@@ -54,7 +54,7 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         Bundle bundle = getIntent().getExtras();
-        Topic topic = (Topic) bundle.getSerializable("topic");
+        HashMap topic = (HashMap) bundle.getSerializable("topic");
         System.out.println("Topic " + topic);
         // you can show ad with its assigned template
         TUtils.showAdDialog(this,topic);
