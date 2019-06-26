@@ -1,4 +1,4 @@
-# tagipedia-android
+# Android advertising using beacons
 
 ## Installation
 
