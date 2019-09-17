@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.tagipedia:tagipedia:2.1.0@aar'){
+    compile ('com.tagipedia:tagipedia:2.2.0@aar'){
         transitive = true;
     }
 }
@@ -57,6 +57,8 @@ public class MyAppContext extends MultiDexApplication {
             }
         };
         tBuilder.setMapButtonPressedListener(onMapButtonPressedListener);
+        //to monitoring specific regions
+        tBuilder.setRegions(new ArrayList<TRegion>(Arrays.asList(new TRegion(UUID, major, minor), ...)));
         tBuilder.build();
         //to register user with interests
         //this will show ads based on matching between ad interests and user interests otherwise it will show ads that was created without interests
@@ -103,6 +105,10 @@ TUtils.showAdDialog(this,topic);
 ### Hint: to logout user..
 ```java
 tBuilder.logoutUser();
+```
+### Hint: to receive current region user located at. you should set the regions (ArrayList of TRegion ) before build
+```java
+tBuilder.setRegions(new ArrayList<TRegion>(Arrays.asList(new TRegion(UUID, major, minor), ...)));
 ```
 
 ## Sample code
