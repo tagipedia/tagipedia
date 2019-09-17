@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.tagipedia:tagipedia:2.0.1@aar'){
+    compile ('com.tagipedia:tagipedia:2.1.0@aar'){
         transitive = true;
     }
 }
@@ -41,7 +41,27 @@ public class MyAppContext extends MultiDexApplication {
             }
         };
         tBuilder.setEventLoggerListener(loggedEventRecordListener);
+        // to receive feature_id if the action of ad is navigate to map location
+        // you should open the map and navigate to the location that recived
+        Callback.OnMapButtonPressedListener onMapButtonPressedListener = new Callback.OnMapButtonPressedListener() {
+            @Override
+            public void onMapButtonPressed(HashMap hashMap) {
+                System.out.print(hashMap);
+                // dispatch to tagipedia maps to navigate to location should be like this
+                // LinkedHashMap<String, Object> navigationParams = new LinkedHashMap<String, Object>();
+                // navigationParams.put("route_to", (String)hashMap("feature_id"));
+                // new HashMap<String, Object>(){{
+                // put("type", "SHOW_NAVIGATION_DIALOG");
+                // put("navigation_params", navigationParams);
+                // }}
+            }
+        };
+        tBuilder.setMapButtonPressedListener(onMapButtonPressedListener);
         tBuilder.build();
+        //to register user with interests
+        //this will show ads based on matching between ad interests and user interests otherwise it will show ads that was created without interests
+        //String[] interests
+        tBuilder.identifyUser("USER_NAME", interests);
     }
 }
 ```
@@ -78,6 +98,11 @@ TUtils.showLocationDialog(this, "Open Location" , "we use location for .... plea
 ### Hint: to show ad with its assigned template.
 ```java
 TUtils.showAdDialog(this,topic);
+```
+
+### Hint: to logout user..
+```java
+tBuilder.logoutUser();
 ```
 
 ## Sample code
