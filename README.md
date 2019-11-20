@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.tagipedia:tagipedia:2.2.1@aar'){
+    compile ('com.tagipedia:tagipedia:2.2.2@aar'){
         transitive = true;
     }
 }
@@ -57,6 +57,26 @@ public class MyAppContext extends MultiDexApplication {
             }
         };
         tBuilder.setMapButtonPressedListener(onMapButtonPressedListener);
+        
+        //to receive when user enter beacon region
+        Callback.OnEnterBeaconRegionListener onEnterBeaconRegion = new Callback.OnEnterBeaconRegionListener(){
+            @Override
+            public void onEnterBeaconRegion(HashMap data) {
+                System.out.print(data);
+            }
+        };
+        tBuilder.setEnterBeaconRegionListener(onEnterBeaconRegion);
+        //to receive when user exit beacon region
+        Callback.OnExitBeaconRegionListener onExitBeaconRegion = new Callback.OnExitBeaconRegionListener(){
+            @Override
+            public void onExitBeaconRegion(HashMap data) {
+                System.out.print(data);
+                //time_spent in milliseconds
+                //enter_date and exit_date in millisecond since 1970
+            }
+        };
+        tBuilder.setExitBeaconRegionListener(onExitBeaconRegion);
+        
         //to monitoring specific regions
         tBuilder.setRegions(new ArrayList<TRegion>(Arrays.asList(new TRegion(UUID, major, minor), ...)));
         tBuilder.build();
