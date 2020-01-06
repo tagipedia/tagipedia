@@ -63,6 +63,8 @@ public class MyAppContext extends MultiDexApplication {
             @Override
             public void onEnterBeaconRegion(HashMap data) {
                 System.out.print(data);
+                //enter_date the date that the user enter the area which beacon cover it return in millisecond since 1970
+                //data contain enter_date and others data belong to beacon
             }
         };
         tBuilder.setEnterBeaconRegionListener(onEnterBeaconRegion);
@@ -71,8 +73,9 @@ public class MyAppContext extends MultiDexApplication {
             @Override
             public void onExitBeaconRegion(HashMap data) {
                 System.out.print(data);
-                //time_spent in milliseconds
-                //enter_date and exit_date in millisecond since 1970
+                //time_spent the time that the user spent in the area which beacon cover it return in milliseconds
+                //enter_date and exit_date the date that the user enter and exit the area which beacon cover it return in millisecond since 1970
+                //data contain enter_date, exit_date, time_spent and others data belong to beacon
             }
         };
         tBuilder.setExitBeaconRegionListener(onExitBeaconRegion);
